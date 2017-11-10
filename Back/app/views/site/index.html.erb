@@ -1,0 +1,34 @@
+<h1>Library</h1>
+
+<p>
+    <%= link_to "New", new_sites_path %>
+</p>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    
+    <% @site.each do |site| %>
+        <% cache site do %>
+        <tr>
+            <td>
+                <%= site.title %>
+            </td>
+            <td>
+                <%= site.author %>
+            </td>
+            <td>
+                <%= link_to "Edit", edit_site_path(site) %>
+            </td>
+            <td>
+                <%= link_to "Show Content", site_path(site) %>
+            </td>
+            <td>
+                <%= link_to "Delete", sites_path(site), method: :delete, data: {confirm: "Sure?"} %>
+            </td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>
