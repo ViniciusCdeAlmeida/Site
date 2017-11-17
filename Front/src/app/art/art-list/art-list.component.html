@@ -1,3 +1,15 @@
-<p>
-  art-list works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewArt()">New Art</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-art-item
+      *ngFor="let artEl of arts; let i = index"
+      [art]="artEl"
+      [index]="i"></app-art-item>
+  </div>
+</div>
+
