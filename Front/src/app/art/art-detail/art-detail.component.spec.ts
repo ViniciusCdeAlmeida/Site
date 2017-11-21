@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeadersComponent } from './headers.component';
+import { ArtDetailComponent } from './art-detail.component';
 
-describe('HeadersComponent', () => {
-  let component: HeadersComponent;
-  let fixture: ComponentFixture<HeadersComponent>;
+describe('ArtDetailComponent', () => {
+  let component: ArtDetailComponent;
+  let fixture: ComponentFixture<ArtDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeadersComponent ]
+      declarations: [ ArtDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeadersComponent);
+    fixture = TestBed.createComponent(ArtDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

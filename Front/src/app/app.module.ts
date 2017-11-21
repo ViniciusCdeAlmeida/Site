@@ -1,24 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MaterializeModule } from 'angular2-materialize';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
-import { HeadersComponent } from './headers/headers.component';
 import { ArtComponent } from './art/art.component';
+import { UserComponent } from './user/user.component';
+import { CategoryComponent } from './category/category.component';
+import { ArtEditComponent } from './art/art-edit/art-edit.component';
 import { ArtListComponent } from './art/art-list/art-list.component';
-import { ArtEditComponent } from './art-edit/art-edit.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './user/login/login.component';
+import { ArtDetailComponent } from './art/art-detail/art-detail.component';
+import { HomeComponent } from './home/home.component';
+import { RoutesModule } from './shared/routes.module';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { ArtItemComponent } from './art/art-list/art-item/art-item.component';
+import { ArtService } from './shared/service/art.service'
+import { StorageService } from './shared/service/storage.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeadersComponent,
     ArtComponent,
+    UserComponent,
+    CategoryComponent,
+    ArtEditComponent,
     ArtListComponent,
-    ArtEditComponent
+    CategoryEditComponent,
+    CategoryListComponent,
+    HeaderComponent,
+    LoginComponent,
+    ArtDetailComponent,
+    HomeComponent,
+    DropdownDirective,
+    ArtItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RoutesModule/* ,
+    HttpModule */
   ],
-  providers: [],
+  providers: [ArtService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
