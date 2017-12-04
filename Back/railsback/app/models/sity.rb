@@ -1,2 +1,0 @@
-class Sity < ApplicationRecord
-end

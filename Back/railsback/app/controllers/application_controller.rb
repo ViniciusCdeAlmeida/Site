@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+    include ActionController::MimeResponds  
+    rescue_from ActionView::MissingTemplate do |exception|
+    end
 end

@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { MaterializeModule } from 'angular2-materialize';
-
+import {HttpModule} from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Angular2TokenService } from 'angular2-token';
 
 import { AppComponent } from './app.component';
 import { ArtComponent } from './art/art.component';
@@ -20,8 +21,10 @@ import { HomeComponent } from './home/home.component';
 import { RoutesModule } from './shared/routes.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ArtItemComponent } from './art/art-list/art-item/art-item.component';
-import { ArtService } from './shared/service/art.service'
-import { StorageService } from './shared/service/storage.service'
+import { ArtService } from './shared/service/art.service';
+import { StorageService } from './shared/service/storage.service';
+import { CategoryService } from './category/category.service';
+import { CategoryItemComponent } from './category/category-list/category-item/category-item.component';
 
 @NgModule({
   declarations: [
@@ -38,16 +41,17 @@ import { StorageService } from './shared/service/storage.service'
     ArtDetailComponent,
     HomeComponent,
     DropdownDirective,
-    ArtItemComponent
+    ArtItemComponent,
+    CategoryItemComponent    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutesModule/* ,
-    HttpModule */
+    RoutesModule,
+    HttpModule
   ],
-  providers: [ArtService, StorageService],
+  providers: [ArtService, /* StorageService, */ CategoryService, Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
