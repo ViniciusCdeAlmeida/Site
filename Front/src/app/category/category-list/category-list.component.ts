@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router'
 import { Subscription } from 'rxjs/Subscription';
+
 import {StorageService} from '../../shared/service/storage.service';
 import {Category} from '../../shared/category.model';
 import {CategoryService} from '../category.service';
@@ -12,7 +13,7 @@ import {CategoryService} from '../category.service';
   providers: [StorageService]
 })
 
-export class CategoryListComponent implements OnInit {
+export class CategoryListComponent implements OnInit, OnDestroy {
 
   private categories: Category[] = [];
   subscription: Subscription;
@@ -20,13 +21,15 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private router: Router, 
     private route: ActivatedRoute, 
-    private storageService: StorageService) { }
+    private storageService: StorageService,
+    private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.storageService.getCategories().subscribe(
-      (data) => {this.categories = data});
-    });
+      this.storageService.getCategories()});
+    this.categoryService.categoryChanged.subscribe(
+      (cats: Category[]) => {this.categories = cats;});
+    // this.categories = this.categoryService.getCategories();
   }
 
   onNewCategory() {

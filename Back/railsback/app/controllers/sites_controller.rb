@@ -49,7 +49,7 @@ class SitesController < ApplicationController
 
     private 
     def site_params 
-        params.require(:site).permit(:description, :title, :imgpath, :category)
+        params.require(:site).permit(:description, :title, :picture, :category)
     end
 end
 

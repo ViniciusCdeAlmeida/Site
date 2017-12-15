@@ -13,6 +13,7 @@ export class CategoryItemComponent implements OnInit {
 
   @Input() category: Category;
   @Input() index: number;
+  @Input() value: number;
 
   ngOnInit() {}
 

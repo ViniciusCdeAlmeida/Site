@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{ art.title }}</h1>
+    <h1>{{art.title}}</h1>
   </div>
 </div>
 <div class="row">
@@ -15,15 +15,15 @@
       </button>
       <ul class="dropdown-menu">
         <li><a style="cursor: pointer;" (click)="onEditArt(art)">Edit Art</a></li>
-        <li><a style="cursor: pointer;" (click)="deleteArt(art)">Delete Art</a></li>
+        <li><a style="cursor: pointer;" (click)="deleteArt()">Delete Art</a></li>
       </ul>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    {{ art.description }}
+    <!-- {{ art.description }}
     {{ art.title }}
-    {{ art.category }}
+    {{ art.category }} -->
   </div>
 </div>

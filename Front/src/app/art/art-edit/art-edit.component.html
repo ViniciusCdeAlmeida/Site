@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
             <label for="imgpath">Image URL</label>
@@ -34,12 +34,31 @@
               #imgpath>
           </div>
         </div>
-      </div>
+      </div> -->
+      
       <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <div class="file-field input-field">
+              <div class="btn">
+                  <span>File</span>
+                <input type="file" id = "picture" (change)="onFileChange($event)" #picture>
+                <!-- <img src="imgpath"> -->
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" >
+              </div>
+              <!-- <div><button  class="btn" (click) = "upload()">Upload</button></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- <div class="row">
         <div class="col-xs-12">
           <img [src]="imgpath.value" class="img-responsive">
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
@@ -53,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
             <label for="category">Category</label>
@@ -64,7 +83,19 @@
               class="form-control">
           </div>
         </div>
-      </div>
+      </div> -->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+              <label for="category">Category</label>
+              <select materialize="material_select" [materializeSelectOptions]="cats" id="category" name= "category" formControlName="category">
+                  <option *ngFor="let cats of categories" [value]="cats.id">{{cats.title}}</option>    
+              </select>
+              
+          </div>                
+        </div>
+    </div>
       <!-- <div class="row">
         <div class="col-xs-12" formArrayName="ingredients">
           <div

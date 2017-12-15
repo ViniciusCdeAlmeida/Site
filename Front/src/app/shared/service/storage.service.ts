@@ -13,7 +13,10 @@ import { ArtService } from './art.service'
 
 @Injectable()
 export class StorageService {
-  constructor(private http: Http, private artService: ArtService) {}
+  constructor(
+    private http: Http, 
+    private artService: ArtService,
+    private categoryService: CategoryService) {}
 
   private urlArt: string = "http://localhost:3000/sites";
   private urlCat: string = "http://localhost:3000/categories";
@@ -23,11 +26,10 @@ export class StorageService {
   //  }
 
   getArts(){
-    this.http.get(this.urlArt).map((response: Response) => 
-      {
+    this.http.get(this.urlArt).map((response: Response) => {
         const arts: Art[] = response.json(); 
-        return arts;
-      }).subscribe((art: Art[]) => {this.artService.setArts(art)});
+        return arts;}).subscribe(
+          (art: Art[]) => {this.artService.setArts(art)});
   }
 
   getArt(id){
@@ -36,6 +38,7 @@ export class StorageService {
   }
 
   addArt(art){
+    console.log(art)
     return this.http.post(this.urlArt, {'site': art})
       .map(res => res.json());
   }
@@ -57,15 +60,22 @@ export class StorageService {
 
 //--------------------------------------------//
 
+getCategories(){
+  this.http.get(this.urlCat).map((response: Response) => {
+      const cats: Category[] = response.json(); 
+      return cats;}).subscribe(
+        (cat: Category[]) => {this.categoryService.setCategories(cat)});
+}
+
   getCategory(id){
         return this.http.get(this.urlCat + '/' + id)
           .map(category => category.json());
   }
 
-  getCategories(){
-        return this.http.get(this.urlCat)
-          .map(category => category.json());
-  }
+  // getCategories(){
+  //       return this.http.get(this.urlCat)
+  //         .map(category => category.json());
+  // }
 
   addCategory(category){
     return this.http.post(this.urlCat, {'category': category})

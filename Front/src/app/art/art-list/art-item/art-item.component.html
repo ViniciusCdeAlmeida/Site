@@ -1,12 +1,26 @@
 <a
 style="cursor: pointer;"
-[routerLink]="[index]"
+[routerLink]="[art.id]"
 routerLinkActive="active"
-class="list-group-item clearfix">
+class="list-group-item clearfix"
+(click)= "sendID(art.id)">
 <div class="pull-left">
   <h4 class="list-group-item-heading">{{ art.title }}</h4>
   <p class="list-group-item-text">{{ art.description }}</p>
+  <p class="list-group-item-text">{{ art.id }}</p>
 </div>
+
+<!-- <a
+style="cursor: pointer;"
+[routerLink]="[index]"
+routerLinkActive="active"
+class="list-group-item clearfix">
+<div class="input-field col s12">
+  <select>
+  <h4 class="list-group-item-heading">{{ art.title }}</h4>
+</select>
+</div> -->
+
 <!-- <span class="pull-right">
       <img
         [src]="art.imgpath"
@@ -15,3 +29,5 @@ class="list-group-item clearfix">
         style="max-height: 50px;">
     </span> -->
 </a>
+
+
