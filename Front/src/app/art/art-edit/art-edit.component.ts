@@ -24,7 +24,7 @@ export class ArtEditComponent implements OnInit {
   editMode = false;
   artForm: FormGroup;
   art: Art = new Art;
-  image: any
+  image: any =[];
 
   @ViewChild('picture') picture: ElementRef;
 
@@ -37,29 +37,41 @@ export class ArtEditComponent implements OnInit {
               private categoryService: CategoryService) {
   }
 
-  onFileChange(event){
+  /* onFileChange(event){
     let reader = new FileReader();
     if(event.target.files.length > 0) {
       let file = event.target.files[0];
-      // reader.readAsDataURL(file);
-      // console.log(reader.result.split(',')[1])
       reader.onloadend = () => {
-        // this.artForm.get('imgpath').setValue({
-        //   this.image = reader.result;
-        // })
         this.image = reader.result;
         this.artForm.get('picture').setValue(this.image);
         console.log(this.artForm.get('picture'))
       };
       reader.readAsDataURL(file);
-      // console.log(this.artForm.get('imgpath'))
-      // reader.readAsDataURL(file);
-      // this.artForm.get('imgpath').setValue(file);
-      // console.log(this.artForm.get('imgpath').value)    
-      // console.log(this.artForm.get('picture').value)
-      // let input = new FormData();
-      // input.append('picture', this.artForm.get('picture').value);  
     }
+  } */
+
+
+  onFileChange(event){
+    let j = 0;
+    if(event.target.files.length > 0) { 
+      for(let i = 0; i < event.target.files.length; i++){
+        let reader = new FileReader();      
+        let file = event.target.files[j];       
+        console.log(file);
+        console.log(j);
+        // this.image[j] = file;
+        reader.onprogress = () => {
+          j--;
+          this.image[j] = reader.result;
+          this.artForm.get('multipic').setValue(this.image);
+          };
+        reader.readAsDataURL(file);
+        console.log(this.artForm.get('multipic'))
+        j++;
+      }
+      console.log(this.artForm)
+    }
+    // console.log(this.image)
   }
 
   upload(){
@@ -68,7 +80,6 @@ export class ArtEditComponent implements OnInit {
       const formData = new FormData();
       formData.append("imgpath", fileBrowser.files[0]);
       console.log(formData.get('imgpath'));
-
     }
   }
 
@@ -85,7 +96,6 @@ export class ArtEditComponent implements OnInit {
       this.categoryService.categoryChanged.subscribe(
         (cats: Category[]) => {
           this.categories = cats;
-          // console.log(cats);
         });
   }
 
@@ -93,13 +103,9 @@ export class ArtEditComponent implements OnInit {
     if (this.editMode) {
       this.artService.updateArt(this.id, this.artForm.value);
     } else {
-      // console.log(this.value);
-      // console.log(this.artForm.value);
       this.artService.addArt(this.artForm.value);
-      // console.log(this.artForm.get('title').value);
-      // console.log(this.artForm.value);
-      this.storageService.addArt(this.artForm.value).
-      subscribe(data => this.artForm.value);{}
+      // console.log(this.artForm.value)
+      this.storageService.addArt(this.artForm.value).subscribe(data => this.artForm.value);{}
     }    
     this.onCancel();
   }
@@ -121,10 +127,10 @@ export class ArtEditComponent implements OnInit {
     //   artDescription = art.description;
     //   artCategory = art.category;
     // }
-
+/* ONDE GRAVA NO JSON */
     this.artForm = new FormGroup({
       'title': new FormControl(artTitle, Validators.required),
-      'picture': new FormControl(artImgpath, Validators.required),
+      'multipic': new FormControl(artImgpath, Validators.required),
       'description': new FormControl(artDescription, Validators.required),
       'category': new FormControl(artCategory, Validators.required)
     });

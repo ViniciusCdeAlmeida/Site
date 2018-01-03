@@ -20,10 +20,6 @@ export class StorageService {
 
   private urlArt: string = "http://localhost:3000/sites";
   private urlCat: string = "http://localhost:3000/categories";
-  
-  // getArts(){
-  //       return this.http.get(this.urlArt).map(art => art.json());
-  //  }
 
   getArts(){
     this.http.get(this.urlArt).map((response: Response) => {
@@ -42,11 +38,6 @@ export class StorageService {
     return this.http.post(this.urlArt, {'site': art})
       .map(res => res.json());
   }
-
-  // addArt(art){
-  //   return this.http.post(this.urlArt, this.artService.getArts())
-  //     .map(res => res.json());
-  // }
 
   updateArts(art){
     return this.http.put(this.urlArt + '/' + art.id,  {'site': art})
@@ -71,11 +62,6 @@ getCategories(){
         return this.http.get(this.urlCat + '/' + id)
           .map(category => category.json());
   }
-
-  // getCategories(){
-  //       return this.http.get(this.urlCat)
-  //         .map(category => category.json());
-  // }
 
   addCategory(category){
     return this.http.post(this.urlCat, {'category': category})

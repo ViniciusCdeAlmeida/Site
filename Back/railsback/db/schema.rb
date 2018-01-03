@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214210613) do
+ActiveRecord::Schema.define(version: 20180102234626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,14 +21,21 @@ ActiveRecord::Schema.define(version: 20171214210613) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "multipics", force: :cascade do |t|
+    t.bigint "site_id"
+    t.string "multipic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_multipics_on_site_id"
+  end
+
   create_table "sites", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture"
-    t.string "imgpath"
+    t.json "picture"
   end
 
   create_table "sities", force: :cascade do |t|
@@ -69,4 +76,5 @@ ActiveRecord::Schema.define(version: 20171214210613) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "multipics", "sites"
 end

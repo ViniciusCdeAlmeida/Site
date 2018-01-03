@@ -25,22 +25,15 @@ export class ArtDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.art)
+
     this.route.params.subscribe((params: Params) => {
       this.artID = +params['id'];
-      // console.log(this.artID)
       this.storageService.getArt(this.artID).subscribe(
           art => this.art = art);
-          // console.log(this.art)
     });
-    
-
   }
 
   deleteArt(arts){
-  //  var index = this.art.indexOf(arts);
-  //   this.arts.splice(index, 1);
-  // console.log(this.artID)
 
     this.storageService.deleteArt(this.artID).subscribe(null);
   }
