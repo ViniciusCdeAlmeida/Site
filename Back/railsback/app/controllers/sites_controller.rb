@@ -9,9 +9,9 @@ class SitesController < ApplicationController
         logger.debug @site
         respond_to do |format|
             if @site.save
-                params[:site][:multipic_data].each do |file|
-                    @site.multipics.create!(:multipic => file) 
-                end
+                # params[:site][:multipic_data].each do |file|
+                #     @site.multipics.create!(:multipic => file) 
+                # end
                 format.json{render @site, status: :created, location: @site}
             else
                 render 'new'
@@ -53,7 +53,7 @@ class SitesController < ApplicationController
 
     private 
     def site_params 
-        params[:site][:picture] ||= []
-        params.require(:site).permit(:description, :title, :category, :picture, :multipic => [])
+        # params[:site][:picture] ||= []
+        params.require(:site).permit(:description, :title, :category, :picture)
     end
 end

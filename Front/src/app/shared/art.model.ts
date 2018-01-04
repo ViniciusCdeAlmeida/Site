@@ -4,5 +4,6 @@ export class Art{
         public title: string;
         public description: string;
         public category: string;
-        public multipic: string|any;
+        public picture: string|any;
+        // public multipic: string|any;
     }

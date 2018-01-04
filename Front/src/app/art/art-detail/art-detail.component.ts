@@ -33,6 +33,11 @@ export class ArtDetailComponent implements OnInit {
     });
   }
 
+  onEditArt(){
+
+    this.router.navigate(['edit'], {relativeTo: this.route});
+  }
+
   deleteArt(arts){
 
     this.storageService.deleteArt(this.artID).subscribe(null);

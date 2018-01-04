@@ -19,7 +19,11 @@ export class ArtService {
   }
 
   getArt(index: number) {
-    return this.arts[index];
+    return this.arts.filter(found => 
+      {
+        if(found.id == index)
+          return found
+      });
   }
 
   addArt(art: Art) {

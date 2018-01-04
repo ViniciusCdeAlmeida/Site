@@ -24,7 +24,7 @@ export class ArtEditComponent implements OnInit {
   editMode = false;
   artForm: FormGroup;
   art: Art = new Art;
-  image: any =[];
+  image: any;
 
   @ViewChild('picture') picture: ElementRef;
 
@@ -37,7 +37,8 @@ export class ArtEditComponent implements OnInit {
               private categoryService: CategoryService) {
   }
 
-  /* onFileChange(event){
+  /* FUNCIONANDO SOMENTE 1 IMG COM BASE64 */
+  onFileChange(event){
     let reader = new FileReader();
     if(event.target.files.length > 0) {
       let file = event.target.files[0];
@@ -48,10 +49,24 @@ export class ArtEditComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
-  } */
+  }
+
+  // onFileChange(event){
+  //   let reader = new FileReader();
+  //   if(event.target.files.length > 0) {
+  //     let file = event.target.files[0];
+  //     reader.onloadend = () => {
+  //       this.image = reader.result;
+        
+  //       this.artForm.get('picture').setValue(this.image);
+  //       console.log(this.artForm.get('picture'))
+  //     };
+  //     reader.readAsBinaryString(file);
+  //   }
+  // }
 
 
-  onFileChange(event){
+  /* onFileChange(event){
     let j = 0;
     if(event.target.files.length > 0) { 
       for(let i = 0; i < event.target.files.length; i++){
@@ -60,28 +75,22 @@ export class ArtEditComponent implements OnInit {
         console.log(file);
         console.log(j);
         // this.image[j] = file;
+        // this.artForm.get('picture').setValue(this.image);
+        // reader.readAsDataURL(file);
         reader.onprogress = () => {
           j--;
           this.image[j] = reader.result;
-          this.artForm.get('multipic').setValue(this.image);
+          this.artForm.get('picture').setValue(this.image);
+          // this.artForm.get('multipic').setValue(this.image);
           };
         reader.readAsDataURL(file);
-        console.log(this.artForm.get('multipic'))
+        console.log(this.artForm.get('picture'))
         j++;
       }
       console.log(this.artForm)
     }
     // console.log(this.image)
-  }
-
-  upload(){
-    let fileBrowser = this.picture.nativeElement;
-    if (fileBrowser.files && fileBrowser.files[0]) {
-      const formData = new FormData();
-      formData.append("imgpath", fileBrowser.files[0]);
-      console.log(formData.get('imgpath'));
-    }
-  }
+  } */
 
   ngOnInit() {
     this.route.params
@@ -101,7 +110,9 @@ export class ArtEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
+      console.log(this.artForm.value)
       this.artService.updateArt(this.id, this.artForm.value);
+      this.storageService.updateArts(this.artForm.value).subscribe(data => this.artForm.value);{}
     } else {
       this.artService.addArt(this.artForm.value);
       // console.log(this.artForm.value)
@@ -119,20 +130,27 @@ export class ArtEditComponent implements OnInit {
     let artImgpath;
     let artDescription = '';
     let artCategory = '';
+    let artId: number;
 
-    // if (this.editMode) {
-    //   const art = this.artService.getArt(this.id);
-    //   artTitle = art.title;
-    //   artImgpath = art.imgpath;
-    //   artDescription = art.description;
-    //   artCategory = art.category;
-    // }
+    if (this.editMode) {
+      console.log(this.id);
+      const art = this.artService.getArt(this.id);
+      // const art1 = this.artService.getArts();
+      console.log(art[0]);
+      artTitle = art[0].title;
+      artImgpath = art[0].picture;
+      artDescription = art[0].description;
+      artCategory = art[0].category;
+      artId = art[0].id
+    }
+    
 /* ONDE GRAVA NO JSON */
     this.artForm = new FormGroup({
       'title': new FormControl(artTitle, Validators.required),
-      'multipic': new FormControl(artImgpath, Validators.required),
+      'picture': new FormControl(artImgpath, Validators.required),
       'description': new FormControl(artDescription, Validators.required),
-      'category': new FormControl(artCategory, Validators.required)
+      'category': new FormControl(artCategory, Validators.required),
+      'id': new FormControl(artId, Validators.required)
     });
   }
 
