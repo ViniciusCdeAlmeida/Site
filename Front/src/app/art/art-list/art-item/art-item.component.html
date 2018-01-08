@@ -1,13 +1,19 @@
-<a
+<!-- <a
 style="cursor: pointer;"
 [routerLink]="[art.id]"
 routerLinkActive="active"
-class="list-group-item clearfix">
-<div class="pull-left">
+class="list-group-item clearfix"> -->
+
+<!-- [routerLink]="[art.id]" -->
+<a
+[routerLink]="[art.id]"
+[href]="'http://localhost:3000' + art.picture.url"
+routerLinkActive="active">
+<!-- <div class="pull-left">
   <h4 class="list-group-item-heading">{{ art.title }}</h4>
   <p class="list-group-item-text">{{ art.description }}</p>
   <p class="list-group-item-text">{{ art.id }}</p>
-</div>
+</div> -->
 
 <!-- <span class="pull-right">
   <img
@@ -17,13 +23,30 @@ class="list-group-item clearfix">
     style="max-height: 50px;">
 </span> -->
 
-<span class="pull-right">
+<!-- <span class="pull-right">
   <img
     [src]= "'http://localhost:3000' + art.picture.url"
     alt="{{ art.title }}"
     class="img-responsive"
     style="max-height: 50px;">
-</span>
+
+    <img 
+    alt="Bootstrap Image Preview" 
+    src="http://lorempixel.com/140/140/" 
+    class="img-thumbnail" 
+    >
+</span> -->
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12"> -->
+      <img 
+      alt="{{ art.title }}"
+      [src]= "'http://localhost:3000' + art.picture.url"
+      class="img-thumbnail img-responsive col-sm-4">
+    <!-- </div>
+  </div>
+</div> -->
 
 <!-- <a
 style="cursor: pointer;"
@@ -43,6 +66,19 @@ class="list-group-item clearfix">
         class="img-responsive"
         style="max-height: 50px;">
     </span> -->
-</a>
+  </a>
 
-
+<!-- 
+  <div class="container">
+      <div id="container" class="row">
+      <div class="col-md-4 mix category-a">
+          <div class="single-portfolio">
+          <a class="gallery-item" href="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg"><img class="img-responsive" src="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg" alt="One" /></a>
+        </div>
+        <div class="col-md-4 mix category-b">
+            <div class="single-portfolio">
+            <a class="gallery-item" href="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg"><img class="img-responsive" src="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg" alt="One" /></a>
+          </div>
+      </div>
+    </div>
+  </div> -->
