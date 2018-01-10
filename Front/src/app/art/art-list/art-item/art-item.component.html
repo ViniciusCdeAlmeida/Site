@@ -8,6 +8,7 @@ class="list-group-item clearfix"> -->
 <!-- [href] = "'http://192.168.182.131:3000' + art.picture.url" -->
 <a
 routerLinkActive="active"
+[routerLink]="[art.id]"
 >
 <!-- <div class="pull-left">
   <h4 class="list-group-item-heading">{{ art.title }}</h4>
@@ -45,12 +46,11 @@ routerLinkActive="active"
       [src]= "'http://localhost:3000' + art.picture.url"
       class="img-thumbnail img-responsive row col-sm-4"
       style= "height:350px"> -->
-      <img 
-      materialize=""
-      alt="{{ art.title }}"
+      <img
       class="materialboxed row col-sm-4"
       materialize = "materialbox"
-      height = 350
+      height=350
+      [attr.data-caption]="art.description"
       [src]="'http://192.168.182.131:3000' + art.picture.url"
       >
     <!-- </div>
