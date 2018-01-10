@@ -27,7 +27,7 @@ export class ArtListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.storageService.getArts()
-      console.log(this.artService.getArts())
+      // console.log(this.artService.getArts())
     });
     this.artService.artChanged.subscribe((artss: Art[]) => {this.arts = artss;});
     

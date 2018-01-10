@@ -47,7 +47,6 @@ import { CategorySelectComponent } from './category/category-list/category-selec
     DropdownDirective,
     ArtItemComponent,
     CategoryItemComponent,
-    MaterializeDirective,
     CategorySelectComponent,
     FileSelectDirective
   ],
@@ -55,8 +54,9 @@ import { CategorySelectComponent } from './category/category-list/category-selec
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutesModule,
+    RoutesModule,MaterializeModule,
     HttpModule
+    
   ],
   providers: [ArtService, /* StorageService, */ CategoryService, Angular2TokenService],
   bootstrap: [AppComponent]

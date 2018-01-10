@@ -18,8 +18,8 @@ export class StorageService {
     private artService: ArtService,
     private categoryService: CategoryService) {}
 
-  private urlArt: string = "http://localhost:3000/sites";
-  private urlCat: string = "http://localhost:3000/categories";
+  private urlArt: string = "http://192.168.182.131:3000/sites";
+  private urlCat: string = "http://192.168.182.131:3000/categories";
 
   getArts(){
     this.http.get(this.urlArt).map((response: Response) => {

@@ -5,10 +5,10 @@ routerLinkActive="active"
 class="list-group-item clearfix"> -->
 
 <!-- [routerLink]="[art.id]" -->
+<!-- [href] = "'http://192.168.182.131:3000' + art.picture.url" -->
 <a
-[routerLink]="[art.id]"
-[href]="'http://localhost:3000' + art.picture.url"
-routerLinkActive="active">
+routerLinkActive="active"
+>
 <!-- <div class="pull-left">
   <h4 class="list-group-item-heading">{{ art.title }}</h4>
   <p class="list-group-item-text">{{ art.description }}</p>
@@ -40,14 +40,30 @@ routerLinkActive="active">
 <!-- <div class="container-fluid">
   <div class="row">
     <div class="col-md-12"> -->
-      <img 
+      <!-- <img 
       alt="{{ art.title }}"
       [src]= "'http://localhost:3000' + art.picture.url"
       class="img-thumbnail img-responsive row col-sm-4"
-      style= "height:350px; width:600px">
+      style= "height:350px"> -->
+      <img 
+      materialize=""
+      alt="{{ art.title }}"
+      class="materialboxed row col-sm-4"
+      materialize = "materialbox"
+      height = 350
+      [src]="'http://192.168.182.131:3000' + art.picture.url"
+      >
     <!-- </div>
   </div>
 </div> -->
+
+<!-- <img 
+materialize=""
+alt="{{ art.title }}"
+class="materialboxed row col-sm-4" 
+height = 350
+[src]="'http://192.168.182.131:3000' + art.picture.url"
+> -->
 
 <!-- <a
 style="cursor: pointer;"
@@ -68,18 +84,3 @@ class="list-group-item clearfix">
         style="max-height: 50px;">
     </span> -->
   </a>
-
-<!-- 
-  <div class="container">
-      <div id="container" class="row">
-      <div class="col-md-4 mix category-a">
-          <div class="single-portfolio">
-          <a class="gallery-item" href="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg"><img class="img-responsive" src="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg" alt="One" /></a>
-        </div>
-        <div class="col-md-4 mix category-b">
-            <div class="single-portfolio">
-            <a class="gallery-item" href="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg"><img class="img-responsive" src="https://static.pexels.com/photos/402023/pexels-photo-402023.jpeg" alt="One" /></a>
-          </div>
-      </div>
-    </div>
-  </div> -->
