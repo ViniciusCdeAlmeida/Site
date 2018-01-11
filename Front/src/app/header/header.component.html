@@ -1,9 +1,9 @@
-<ul id="dropdown1" class="dropdown-content">
+<!-- <ul id="dropdown1" class="dropdown-content">
   <li><a href="#!">one</a></li>
   <li><a href="#!">two</a></li>
   <li class="divider"></li>
   <li><a href="#!">three</a></li>
-</ul>
+</ul> -->
 <!-- <nav>
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
@@ -16,44 +16,24 @@
     </ul>
   </div>
 </nav> -->
-
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-       
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      </button> <a class="navbar-brand" routerLink = "/home">SITE</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
-        <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
-        <li routerLinkActive="active"><a routerLink="/login">Login</a></li> 
-        <!-- <li class="dropdown">
-           <a class="dropdown-button" data-toggle="dropdown" id="dropdownMenuButton">Dropdown<strong class="caret"></strong></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Action</a>
-            </li>
-            <li>
-              <a href="#">Another action</a>
-            </li>
-            <li>
-              <a href="#">Something else here</a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-              <a href="#">Separated link</a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-              <a href="#">One more separated link</a>
-            </li>
+    <div id="navbar" class="navbar-fixed scrollspy">
+      <nav  class="white">
+        <div class="nav-wrapper container">
+          <div class="container"> <a routerLink="/home" class="brand-logo">Logo</a></div>
+         
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <ul class="right hide-on-med-and-down">
+           
+            <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+            <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
+            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+           
           </ul>
-        </li> -->
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1" ><strong class="caret"></strong>
-            Dropdown</a></li>
-      </ul>
-    </div>
+          <ul class="right side-nav" id="mobile-demo">
+            <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+            <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
+            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      </div>

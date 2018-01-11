@@ -110,7 +110,7 @@ export class ArtEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      console.log(this.artForm.value)
+      // console.log(this.artForm.value)
       this.artService.updateArt(this.id, this.artForm.value);
       this.storageService.updateArts(this.artForm.value).subscribe(data => this.artForm.value);{}
     } else {
@@ -133,10 +133,10 @@ export class ArtEditComponent implements OnInit {
     let artId: number;
 
     if (this.editMode) {
-      console.log(this.id);
+      // console.log(this.id);
       const art = this.artService.getArt(this.id);
       // const art1 = this.artService.getArts();
-      console.log(art[0]);
+      // console.log(art[0]);
       artTitle = art[0].title;
       artImgpath = art[0].picture;
       artDescription = art[0].description;
