@@ -18,8 +18,8 @@ import { HomeComponent } from '../home/home.component';
 // import {AuthGuard} from "./auth/guards/auth.guard";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  // { path: 'art', component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
   { path: 'art/list', component: ArtListComponent},
   { path: 'category', component: CategoryListComponent},
   { path: 'login', component: LoginComponent /* ,canActivate: [AuthGuard], */},

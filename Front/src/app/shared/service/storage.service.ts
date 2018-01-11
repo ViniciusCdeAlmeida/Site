@@ -1,39 +1,81 @@
-// https://casaart-800a8.firebaseio.com/
-
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/Rx';
+import { Http, Response, Headers } from '@angular/http';
 
-import { ArtService } from './art.service';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+
 import { Art } from '../art.model';
 import { Category } from '../category.model';
+import { CategoryService } from '../../category/category.service';
+import { ArtService } from './art.service'
 
 @Injectable()
 export class StorageService {
-  constructor(private http: Http, private artService: ArtService) {}
+  constructor(
+    private http: Http, 
+    private artService: ArtService,
+    private categoryService: CategoryService) {}
 
-  storeArts() {
-    return this.http.put('https://casaart-800a8.firebaseio.com/arts.json', 
-    this.artService.getArts());
+  private urlArt: string = "http://192.168.182.131:3000/sites";
+  private urlCat: string = "http://192.168.182.131:3000/categories";
+
+  getArts(){
+    this.http.get(this.urlArt).map((response: Response) => {
+        const arts: Art[] = response.json(); 
+        return arts;}).subscribe(
+          (art: Art[]) => {this.artService.setArts(art)});
   }
 
-  getArts() {
-    this.http.get('https://casaart-800a8.firebaseio.com/arts.json')
-      .map(
-        (response: Response) => {
-          const arts: Art[] = response.json();
-          for (let art of arts) {
-            if (!art['ingredients']) {
-              art['ingredients'] = [];
-            }
-          }
-          return arts;
-        }
-      )
-      .subscribe(
-        (arts: Art[]) => {
-          this.artService.setArts(arts);
-        }
-      );
+  getArt(id){
+        return this.http.get(this.urlArt + '/' + id)
+          .map(art => art.json());
   }
+
+  addArt(art){
+    console.log(art)
+    return this.http.post(this.urlArt, {'site': art})
+      .map(res => res.json());
+  }
+
+  updateArts(art){
+    return this.http.put(this.urlArt + '/' + art.id,  {'site': art})
+      .map(res => res.json());
+  }
+
+  deleteArt(id){
+    return this.http.delete(this.urlArt + '/' + id)
+      .map(res => res.json());
+  }
+
+//--------------------------------------------//
+
+getCategories(){
+  this.http.get(this.urlCat).map((response: Response) => {
+      const cats: Category[] = response.json(); 
+      return cats;}).subscribe(
+        (cat: Category[]) => {this.categoryService.setCategories(cat)});
+}
+
+  getCategory(id){
+        return this.http.get(this.urlCat + '/' + id)
+          .map(category => category.json());
+  }
+
+  addCategory(category){
+    return this.http.post(this.urlCat, {'category': category})
+      .map(res => res.json());
+  }
+
+  updateCategories(category){
+    return this.http.put(this.urlCat + '/' + category.id,  {'category': category})
+      .map(res => res.json());
+  }
+
+  deleteCategory(id){
+    return this.http.delete(this.urlCat + '/' + id)
+      .map(res => res.json());
+  }
+
 }

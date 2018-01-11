@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: vinicius
+  database: site
   password: samsung
 
   # The specified database role being used to connect to postgres.

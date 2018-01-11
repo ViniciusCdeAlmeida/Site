@@ -1,10 +1,10 @@
-<ul id="dropdown1" class="dropdown-content">
+<!-- <ul id="dropdown1" class="dropdown-content">
   <li><a href="#!">one</a></li>
   <li><a href="#!">two</a></li>
   <li class="divider"></li>
   <li><a href="#!">three</a></li>
-</ul>
-<nav>
+</ul> -->
+<!-- <nav>
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
     <ul class="right hide-on-med-and-down">
@@ -15,4 +15,25 @@
       <li routerLinkActive="active"><a routerLink="/login">Login</a></li>         
     </ul>
   </div>
-</nav>
+</nav> -->
+    <div id="navbar" class="navbar-fixed scrollspy">
+      <nav  class="white">
+        <div class="nav-wrapper container">
+          <div class="container"> <a routerLink="/home" class="brand-logo">Logo</a></div>
+         
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <ul class="right hide-on-med-and-down">
+           
+            <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+            <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
+            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+           
+          </ul>
+          <ul class="right side-nav" id="mobile-demo">
+            <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+            <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
+            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      </div>
