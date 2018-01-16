@@ -21,6 +21,8 @@ export class StorageService {
 
   private urlArt: string = "http://192.168.182.131:3000/sites";
   private urlCat: string = "http://192.168.182.131:3000/categories";
+  // private urlCat: string = "https://aqueous-tundra-36492.herokuapp.com/categories";
+  // private urlArt: string = "https://aqueous-tundra-36492.herokuapp.com/sites";
 
   artChanged = new Subject<Art[]>();
   categoryChanged = new Subject<Category[]>();
