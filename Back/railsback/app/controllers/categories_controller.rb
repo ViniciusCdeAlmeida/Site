@@ -1,15 +1,15 @@
 class CategoriesController < ApplicationController
 
     def new
-        @cate = Category.new
+        @category = Category.new
     end
 
     def create
-        @cate = Category.new(category_params)
+        @category = Category.new(category_params)
         
         respond_to do |format|
-            if @cate.save
-                format.json{render @cate, status: :created, location: @site}
+            if @category.save
+                format.json{render @category, status: :created, location: @category}
             else
                 render 'new'
             end
@@ -17,21 +17,21 @@ class CategoriesController < ApplicationController
     end
 
     def index
-        @cate = Category.all
+        @category = Category.all
         respond_to do |format|
-            format.json {render json: @cate}
+            format.json {render json: @category}
         end
     end
 
     def show
-        @cate = Category.find(params[:id])
+        @category = Category.find(params[:id])
     end
 
     def update
-        @cate = Category.find(params[:id])
+        @category = Category.find(params[:id])
         respond_to do |format|
-            if @site.update(category_params)
-                format.json { render :show, status: :created, location: @cate }
+            if @category.update(category_params)
+                format.json { render :show, status: :created, location: @category }
             else
                 render 'edit'
             end
@@ -39,8 +39,8 @@ class CategoriesController < ApplicationController
     end
 
     def destroy
-        @cate = Category.find(params[:id])
-        @cate.destroy
+        @category = Category.find(params[:id])
+        @category.destroy
         respond_to do |format|
             format.json {head :no_content}
             redirect_to categories_path

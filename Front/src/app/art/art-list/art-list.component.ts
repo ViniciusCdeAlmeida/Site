@@ -14,7 +14,7 @@ import {MaterializeDirective} from "angular2-materialize";
   providers: [StorageService]
 })
 export class ArtListComponent implements OnInit, OnDestroy {
-  private arts: Art[];
+  arts: Art[];
   subscription: Subscription;
   id: number;
 

@@ -17,6 +17,7 @@ export class CategoryEditComponent implements OnInit {
   id: number;
   editMode = false;
   categoryForm: FormGroup;
+  
 
   category: Category = new Category;
 
@@ -28,14 +29,10 @@ export class CategoryEditComponent implements OnInit {
 
   ngOnInit() {
 
-    this.route.params
-        .subscribe(
-          (params: Params) => {
-            this.id = +params['id'];
-            this.editMode = params['id'] != null;
-            this.initForm();
-          }
-        );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.editMode = params['id'] != null;
+      this.initForm();});
   }
 
   onBackPage(){
@@ -56,14 +53,17 @@ export class CategoryEditComponent implements OnInit {
 
   private initForm() {
     let categoryTitle = '';
+    let catID: number;
 
     if (this.editMode) {
       const category = this.categoryService.getCategory(this.id);
-      categoryTitle = category.title;
+      categoryTitle = category[0].title;
+      catID = category[0].id;
     }
 
     this.categoryForm = new FormGroup({
-      'title': new FormControl(categoryTitle, Validators.required)
+      'title': new FormControl(categoryTitle, Validators.required),
+      'id': new FormControl(catID, Validators.required)
     });
   }
 

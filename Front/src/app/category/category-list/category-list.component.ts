@@ -15,7 +15,7 @@ import {CategoryService} from '../category.service';
 
 export class CategoryListComponent implements OnInit, OnDestroy {
 
-  private categories: Category[] = [];
+  categories: Category[] = [];
   subscription: Subscription;
 
   constructor(

@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(version: 20180103164040) do
     t.string "picture"
   end
 
-  create_table "sities", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "imgpath"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
