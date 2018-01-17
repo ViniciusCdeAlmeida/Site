@@ -35,7 +35,7 @@ export class CategoryEditComponent implements OnInit {
       this.initForm();});
   }
 
-  onBackPage(){
+  onCancel(){
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
@@ -48,7 +48,7 @@ export class CategoryEditComponent implements OnInit {
         this.storageService.addCategory(this.categoryForm.value).
         subscribe(data => this.categoryForm.value);{}
       }
-      this.onBackPage();
+      this.onCancel();
   }
 
   private initForm() {
