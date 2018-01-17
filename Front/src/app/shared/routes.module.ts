@@ -14,6 +14,7 @@ import { HeaderComponent } from '../header/header.component';
 import { LoginComponent } from '../user/login/login.component';
 import { ArtDetailComponent } from '../art/art-detail/art-detail.component';
 import { HomeComponent } from '../home/home.component';
+import { CategoryDetailComponent } from '../category/category-detail/category-detail.component';
 
 // import {AuthGuard} from "./auth/guards/auth.guard";
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
   { path: 'category', component: CategoryComponent, /* canActivate: [AuthGuard], */ 
 children: [
     { path: 'new', component: CategoryEditComponent },
+    { path: ':id', component: CategoryDetailComponent },
     { path: ':id/edit', component: CategoryEditComponent },
   ] 
 },

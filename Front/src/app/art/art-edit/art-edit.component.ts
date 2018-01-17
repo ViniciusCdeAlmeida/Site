@@ -17,8 +17,8 @@ import {Category} from '../../shared/category.model'
 })
 export class ArtEditComponent implements OnInit {
   
+  // value: number;
   id: number;
-  value: number;
   editMode = false;
   artForm: FormGroup;
   art: Art = new Art;
@@ -26,9 +26,10 @@ export class ArtEditComponent implements OnInit {
 
   categories: Category[] = [];
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private storageService: StorageService,) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private storageService: StorageService) {
   }
 
   
@@ -39,7 +40,6 @@ export class ArtEditComponent implements OnInit {
       this.initForm();});
 
     this.storageService.getCategories();
-
     this.storageService.categoryChanged.subscribe((cats: Category[]) => {
       this.categories = cats;});
       

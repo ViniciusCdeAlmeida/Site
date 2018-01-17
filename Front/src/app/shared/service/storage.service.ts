@@ -9,15 +9,13 @@ import 'rxjs/add/operator/catch';
 
 import { Art } from '../art.model';
 import { Category } from '../category.model';
-import { CategoryService } from '../../category/category.service';
 import { ArtService } from './art.service'
 
 @Injectable()
 export class StorageService {
   constructor(
     private http: Http, 
-    private artService: ArtService,
-    private categoryService: CategoryService) {}
+    private artService: ArtService) {}
 
   private urlArt: string = "http://192.168.182.131:3000/sites";
   private urlCat: string = "http://192.168.182.131:3000/categories";
@@ -97,7 +95,11 @@ export class StorageService {
   }
 
   getLocalCategory(index: number) {
-    return this.categories[index];
+    return this.categories.filter(found => 
+      {
+        if(found.id == index)
+          return found
+      });
   }
 
   addLocalCategory(category: Category) {

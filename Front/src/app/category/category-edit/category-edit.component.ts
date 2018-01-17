@@ -4,7 +4,6 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import {StorageService} from '../../shared/service/storage.service'
 import {Category} from '../../shared/category.model'
-// import {CategoryService} from '../category.service'
 
 @Component({
   selector: 'app-category-edit',
@@ -23,20 +22,14 @@ export class CategoryEditComponent implements OnInit {
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
-    // private categoryService: CategoryService,
     private storageService: StorageService) { }
 
   ngOnInit() {
-
-    this.route.params
-        .subscribe(
-          (params: Params) => {
-            this.id = +params['id'];
-            this.editMode = params['id'] != null;
-            this.initForm();
-          }
-        );
-  }
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.editMode = params['id'] != null;
+      this.initForm();});
+    }
 
   onBackPage(){
     this.router.navigate(['../'], {relativeTo: this.route});
@@ -55,14 +48,17 @@ export class CategoryEditComponent implements OnInit {
 
   private initForm() {
     let categoryTitle = '';
+    let catId: number;;
 
     if (this.editMode) {
       const category = this.storageService.getLocalCategory(this.id);
-      categoryTitle = category.title;
+      categoryTitle = category[0].title;
+      catId = category[0].id
     }
 
     this.categoryForm = new FormGroup({
-      'title': new FormControl(categoryTitle, Validators.required)
+      'title': new FormControl(categoryTitle, Validators.required),
+      'id': new FormControl(catId, Validators.required)
     });
   }
 

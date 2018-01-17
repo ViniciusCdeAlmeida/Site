@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { MaterializeModule, MaterializeDirective } from 'angular2-materialize';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -23,9 +23,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ArtItemComponent } from './art/art-list/art-item/art-item.component';
 import { ArtService } from './shared/service/art.service';
 import { StorageService } from './shared/service/storage.service';
-import { CategoryService } from './category/category.service';
 import { CategoryItemComponent } from './category/category-list/category-item/category-item.component';
-import { CategorySelectComponent } from './category/category-list/category-select/category-select.component';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 
 
 @NgModule({
@@ -45,7 +44,7 @@ import { CategorySelectComponent } from './category/category-list/category-selec
     DropdownDirective,
     ArtItemComponent,
     CategoryItemComponent,
-    CategorySelectComponent
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,7 @@ import { CategorySelectComponent } from './category/category-list/category-selec
     HttpModule
     
   ],
-  providers: [ArtService, /* StorageService, */ CategoryService, Angular2TokenService],
+  providers: [ArtService, /* StorageService, */ Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

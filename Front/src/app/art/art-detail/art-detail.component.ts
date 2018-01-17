@@ -15,7 +15,7 @@ export class ArtDetailComponent implements OnInit {
 
   art: any = this.storageService.getArts();
   arts: Art[] = []
-  artID:number
+  artID: number
 
   constructor(
     // private artService: ArtService,
