@@ -4,9 +4,12 @@ import { NgModule } from '@angular/core';
 import { MaterializeModule, MaterializeDirective } from 'angular2-materialize';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { Angular2TokenService } from 'angular2-token';
 
 import { AuthGuard } from './user/guards/user.guard'
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { ArtComponent } from './art/art.component';
@@ -29,7 +32,7 @@ import { CategoryService } from './category/category.service';
 import { CategoryItemComponent } from './category/category-list/category-item/category-item.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 import { RegisterComponent } from './user/register/register.component';
-
+import { InterconnectService } from './shared/service/interconnect.service';
 
 @NgModule({
   declarations: [
@@ -57,8 +60,8 @@ import { RegisterComponent } from './user/register/register.component';
     ReactiveFormsModule,
     RoutesModule,
     MaterializeModule,
-    HttpModule
-    
+    HttpModule,
+    NgxPaginationModule
   ],
   providers: [ArtService, CategoryService, Angular2TokenService, AuthGuard],
   bootstrap: [AppComponent]

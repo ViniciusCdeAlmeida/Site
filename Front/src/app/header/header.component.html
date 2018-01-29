@@ -1,8 +1,18 @@
 <ul id="dropdown1" class="dropdown-content">
-    <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
-    <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
-    <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+  <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+  <li routerLinkActive="active"><a routerLink="/category">Categories</a></li>
+  <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
 </ul>
+
+<ul id="dropdownCategories" class="dropdown-content">
+  <li
+  routerLinkActive="active" 
+  *ngFor="let cats of categories" 
+  [value]="cats.id"
+  [attr.selected] = "cats.title">
+  <a (click) = selectedCat($event.target.text)>{{cats.title}} </a></li>
+</ul>
+
 <!-- <nav>
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
@@ -15,29 +25,29 @@
     </ul>
   </div>
 </nav> -->
-    <div id="navbar" class="navbar-fixed scrollspy">
-      <nav  class="white">
-        <div class="nav-wrapper container">
-          <div class="container"> <a routerLink="/home" class="brand-logo">Logo</a></div>
-         
-          <a data-activates="mobile-demo" class="button-collapse">
+<div id="navbar" class="navbar-fixed scrollspy">
+  <nav class="white">
+    <div class="nav-wrapper container">
+      <div class="container"> <a routerLink="/home" class="brand-logo">Logo</a></div>
+
+      <a data-activates="mobile-demo" class="button-collapse">
             <i class="mdi-navigation-menu">
-              <a class="dropdown-button btn" data-activates="dropdown1" materialize="dropdown">Menu</a></i></a>
-          <ul class="right hide-on-med-and-down">
-           
-            <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
-            <li *ngIf="guard.canActivate()"  routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
-            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-            
-            
-           
-          </ul>
-          <!-- <ul class="right side-nav" id="mobile-demo">
+              <a class="dropdown-button btn" data-activates="dropdown1" materialize="dropdown">Menu</a></i>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
+        <li *ngIf="guard.canActivate()" routerLinkActive="active"><a routerLink="/category">Categories</a></li>
+        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <!-- <li routerLinkActive="active"><a>{{test1}}</a></li> -->
+        <li routerLinkActive="active"><a>{{test}}</a></li>
+        <li><a data-activates="dropdownCategories" materialize="dropdown">Menu</a></li>
+      </ul>
+      <!-- <ul class="right side-nav" id="mobile-demo">
             <li routerLinkActive="active"><a routerLink="/art">Gallery</a></li>
             <li routerLinkActive="active"><a routerLink="/category">Categories</a></li> 
             <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
             <a class="dropdown-button btn" data-activates="dropdown1" materialize="dropdown">Drop Me!</a>
           </ul> -->
-        </div>
-      </nav>
-      </div>
+    </div>
+  </nav>
+</div>

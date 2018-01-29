@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
 
 
   onSignUpSubmit(){
-    // console.log(this.signUpUser);
     this.tokenAuthSerivce.registerAccount(this.signUpUser).subscribe(
         (res) => {this.signUpUser})
     this.router.navigate(['/home']);

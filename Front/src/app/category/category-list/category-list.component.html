@@ -6,6 +6,7 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
+      <button (click)="send()">Send</button> <br>Selected: {{selectedCat}}
     <app-category-item
       *ngFor="let categoryEl of categories; let i = index"
       [category]="categoryEl"
