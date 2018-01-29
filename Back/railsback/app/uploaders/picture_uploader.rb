@@ -2,6 +2,12 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
 
+  cloudinary_transformation :transformation => [
+    {:crop => "thumb"}
+  ]
+  # process :tags => ['post_picture']
+  # process :convert => 'png'
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
